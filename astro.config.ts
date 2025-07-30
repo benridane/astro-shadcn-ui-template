@@ -5,7 +5,7 @@ import { defineConfig, fontProviders } from "astro/config";
 
 const site = process.env.VERCEL
   ? process.env.VERCEL_ENV === "production"
-    ? "astro-shadcn-ui-template.vercel.app"
+    ? "https://astro-shadcn-ui-template.vercel.app"
     : `https://${process.env.VERCEL_URL}`
   : (process.env.SITE ?? "http://localhost:4321");
 const base = process.env.BASE || "/";
