@@ -3,15 +3,17 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 
-const site = process.env.CI
-  ? process.env.VERCEL_ENV !== "production" && process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://astro-shadcn-ui-template.vercel.app"
-  : "http://localhost:4321";
+const site = process.env.VERCEL
+  ? process.env.VERCEL_ENV === "production"
+    ? "astro-shadcn-ui-template.vercel.app"
+    : `https://${process.env.VERCEL_URL}`
+  : (process.env.SITE ?? "http://localhost:4321");
+const base = process.env.BASE || "/";
 
 // https://astro.build/config
 export default defineConfig({
   site,
+  base,
   integrations: [react()],
   experimental: {
     fonts: [
